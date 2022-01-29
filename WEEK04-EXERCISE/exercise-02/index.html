@@ -1,0 +1,218 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Programming - Week 4 Exercise 02</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+    <script src="answer.js"></script>
+</head>
+
+<body>
+    <nav class="navbar" rolLe="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="../exercise-01/index.html">
+                <b>Web Programming | Week 4</b>
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="../exercise-01/index.html"> ข้อที่ 1 Event Loop</a>
+                <a class="navbar-item is-active has-background-warning-light" href="../exercise-02/index.html"> ข้อที่ 2
+                    Callback</a>
+                <a class="navbar-item" href="../exercise-03/index.html"> ข้อที่ 3 Promise</a>
+                <a class="navbar-item" href="../exercise-04/index.html"> ข้อที่ 4 Async & Await</a>
+
+            </div>
+        </div>
+        </div>
+    </nav>
+    <div class="container my-6" id="app">
+        <h3 class="title is-3 my-3"><b>EXERCISE 2 : Callback Function</b></h3>
+      <!-- 2.1 -->
+      <div class="box">
+        <p>
+          <b>2.1</b> ให้นักศึกษาสร้างเครื่องคำนวณหาค่าสูงสุด (Max) จากตัวเลข 2 จำนวน และทำการแสดงผลลัพธ์โดยการแก้ไข <code>function DisplayMax()</code> โดยที่ผลลัพธ์ในการค้นหาจะแสดงผลออกมาทั้งหมด 2 รูปแบบ ดังนี้
+          <br><br>
+          1. ค่าสูงสุดที่ได้คือ : (ค่า Max)<br>
+          2. The Maximum Value is : (ค่า Max)<br>
+        </p>
+        <br>
+        <p class="has-text-danger">หมายเหตุ 1 : ต้องมีการใช้ callback function ในการแสดงผลลัพธ์</p>
+        <p class="has-text-danger">หมายเหตุ 2 : ให้หาค่าสูงสุดผ่านการเรียกใช้ <code>function FindMax()</code> ที่กำหนดมาให้</p>
+        <br /><br>
+        <div class="columns">
+          <div class="column is-2">
+            <input id="max1" class="input" type="number" placeholder="ใส่ตัวเลขที่ 1">
+          </div>
+          <div class="column is-2">
+            <input id="max2" class="input" type="number" placeholder="ใส่ตัวเลขที่ 2">
+          </div>
+          <div class="column is-2">
+            <button class="button is-dark" onclick="displayMax()">
+              >: Run
+            </button>
+          </div>
+          <div class="column is-6 has-background-link-light has-text-centered">
+            <p id="test1" class="is-size-6">
+            <!-- นำข้อมูลมาแสดงผลในส่วนนี้ -->
+              แสดงข้อมูลในส่วนนี้
+            </p>
+            <p id="test2" class="is-size-6">
+              <!-- นำข้อมูลมาแสดงผลในส่วนนี้ -->
+                
+              </p>
+          </div>
+        </div>
+      </div>
+      <!-- 2.2 -->
+    <div class="box">
+        <p>
+          <!-- 2.2 ฟังก์ชันและเมธอดจำนวนมากในภาษา JavaScript รับพารามิเตอร์เป็น Callback function เพื่อนำไปทำงาน ยกตัวอย่างเช่น
+          ฟังก์ชัน setTimeout รับพารามิเตอร์เป็นฟังก์ชัน Callback และนำไปเรียกใช้งานหลังจากที่เวลาผ่านไปตามระยะเวลาที่กำหนด -->
+          <b>2.2</b> ให้นักศึกษาลองฝึกใช้ฟังก์ชั่น <code>setTimeout()</code> แบบง่ายๆ โดยแก้ไข <code>Function start()</code> ให้มีขั้นตอนการทำงานดังต่อไปนี้
+        </p>
+        <li>เมื่อกดปุ่ม Run จะแสดง "Program started" หลังจากนั้นเมื่อผ่านไป 2 วินาที จะแสดง "Hello World" และหลังจากนั้น 3 วินาทีจะแสดง "Program ended" ตามลำดับ</li>
+        <br>
+        <div class="columns">
+          <div class="column is-two-fifth">
+            <button class="button is-dark" onclick="start()">
+              >: Run
+            </button>
+          </div>
+          <div class="column has-background-link-light has-text-centered">
+            <!-- แสดงข้อความที่นี่ -->
+            <span id="start"></span><br>
+            <span id="process"></span><br>
+            <span id="end"></span>
+          </div>
+        </div>
+      </div>
+        <!-- 2.3 -->
+        <div class="box">
+            <p>
+                <b>2.3</b> ให้นักศึกษาสร้างนาฬิกา โดยแก้ไข <code>Function myTime()</code> และ <code>Function mytimeStop()</code>
+                ในการนับเวลาป​ัจจุบัน โดยแสดงเวลาในรูปแบบชั่วโมง นาที และวินาที โดยต้องมีปุ่มที่สามารถกดเพื่อหยุดเวลาได้
+            </p>
+            <br>
+            <p class="has-text-danger">หมายเหตุ 1 : ให้ตั้งเวลา เป็นเวลาปกติภายในเครื่อง</p>
+            <p class="has-text-danger">หมายเหตุ 2 : ปุ่มกดหยุดเวลา ต้องสามารถกดหยุดได้เพียง 1 ครั้ง</p>
+            <p class="has-text-danger">หมายเหตุ 3 : ให้ประยุกต์ใช้ <code>setInterval()</code> และ <code>clearInterval()</code> <a href="https://www.w3schools.com/js/js_timing.asp">Link สำหรับอ่าน</a></p>
+            <br /><br>
+            <div class="columns">
+                <div class="column is-two-fifth">
+                    <button class="button is-dark" onclick="mytimeStop()">
+                        >: Stop
+                    </button>
+                </div>
+                <div class="column has-background-link-light has-text-centered">
+                    <h2 class="title is-2" id="myTime">
+                        <!-- แก้ไขส่วนนี้เพื่อนำข้อมูลมาแสดงผล -->
+                        <span>00</span>
+                        <span>:</span>
+                        <span>00</span>
+                        <span>:</span>
+                        <span>00</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <!-- 2.4 -->
+        <div class="box">
+            <p>
+                <b>2.4</b> ให้นักศึกษาแก้ <code>Function getDogDemo()</code>
+                <br>เมื่อกดปุ่ม Run ให้นับเวลาถอยหลัง 10 วินาที จากนั้นแสดงรูปที่สุ่มได้จาก API
+                <code>https://dog.ceo/api/breeds/image/random</code>
+            </p>
+            <br>
+            <p class="has-text-danger">หมายเหตุ: เรียกใช้ API ด้วยฟังก์ชัน <code>getAPI()</code> เท่านั้น</p>
+            <br /><br>
+            <div class="columns">
+                <div class="column is-two-fifths">
+                    <button class="button is-dark" onclick="getDogDemo()">
+                        >: Run
+                    </button>
+                </div>
+                <div class="column has-background-link-light	has-text-centered">
+                    <!-- แก้ไขส่วนนี้เพื่อนำข้อมูลมาแสดงผล -->
+                    <span class="count-down" id="dogTime">10</span>
+                    <img src="" alt="" id="dogImg">
+                </div>
+            </div>
+        </div>
+        <!-- 2.5 -->
+        <div class="box">
+            <p>
+                <b>2.5</b> ให้แก้ไข <code>Function getMedium()</code>
+                <br>เมื่อกดปุ่ม Run ให้เรียกใช้ API
+                <code>https://v1.nocodeapi.com/jacktnp/medium/xvYwlRhrjtVLsWUn</code>
+                <br>และแสดงผล 4 บทความแรกที่ได้จาก API ด้วยแท็ก &lt;dl&gt; และ &lt;li&gt;
+                <br>โดยให้แต่ละบทความปรากฎขึ้นบนจอโดยมีดีเลย์ห่างกัน 2 - 1 - 3 - 5 วินาที ตามลำดับ
+            </p>
+            <br>
+            <p class="has-text-danger">หมายเหตุ 1 : เรียกใช้ API ด้วยฟังก์ชัน <code>getAPI()</code> เท่านั้น</p>
+            <br /><br>
+            <div class="columns">
+                <div class="column is-two-fifths">
+                    <button class="button is-dark" onclick="getMedium()">
+                        >: Run
+                    </button>
+                </div>
+                <div class="column has-background-link-light">
+                    <!-- แก้ไขส่วนนี้เพื่อนำข้อมูลมาแสดงผล -->
+                    <dl>
+                        <li id="num1" class="is-hidden"></li>
+                        <li id="num2" class="is-hidden"></li>
+                        <li id="num3" class="is-hidden"></li>
+                        <li id="num4" class="is-hidden"></li>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <h3 class="title is-3 my-3 has-text-danger has-text-weight-bold"><b>EXTRA : ข้อนี้ไม่มีคะแนนนะจ้ะ</b></h3>
+        <!-- Extra -->
+        <div class="box">
+            <p>
+                ให้นักศึกษาสร้างนาฬิกาจับเวลา โดยแก้ไข <code>Function stopTime()</code>
+                ในการนับถอยหลัง​​ โดยแสดงเวลาในรูปแบบนาที และวินาที
+            </p>
+            <br>
+            <p class="has-text-danger">หมายเหตุ 1 : ให้ตั้งเวลา default เป็น 119 วินาที</p>
+            <p class="has-text-danger">หมายเหตุ 2 : หากมีการกำหนดจำนวนวินาทีในช่อง Input มากกว่า 0 เมื่อกด Run
+                ให้แสดงผลการนับถอยหลังตามที่กำหนด</p>
+            <p class="has-text-danger">หมายเหตุ 3 : กรณีหมดเวลาและตอนเริ่มต้น ต้องแสดงผลเป็น 00:00 เท่านั้น</p>
+            <br /><br>
+            <div class="columns">
+                <div class="column is-one-fifth">
+                    <input class="input" type="number" placeholder="นับถอยหลังกี่วินาที ?" id="Time" value="119">
+                </div>
+                <div class="column is-one-fifth">
+                    <button class="button is-dark" onclick="stopTime()">
+                        >: Run
+                    </button>
+                </div>
+                <div class="column has-background-link-light has-text-centered">
+                    <h2 class="title is-2">
+                        <!-- แก้ไขส่วนนี้เพื่อนำข้อมูลมาแสดงผล -->
+                        <span id="setMinute"></span>
+                        <span>:</span>
+                        <span id="setSecond"></span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
